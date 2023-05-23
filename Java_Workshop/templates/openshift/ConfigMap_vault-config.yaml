@@ -1,0 +1,82 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ${APPLICATION_NAME}-vault-config
+  namespace: ${NAMESPACE}
+data:
+  agent-config.hcl: |
+    exit_after_auth = true
+
+    vault {
+        address = "${URL_VAULT}"
+        tls_skip_verify = true
+    }
+
+    auto_auth {
+        method "approle" {
+            mount_path = "auth/approle"
+            config {
+                role_id_file_path = "/vault/config/agent-creds/role_id"
+                secret_id_file_path = "/vault/config/agent-creds/secret_id"
+                remove_secret_id_file_after_reading = false
+            }
+        }
+
+        sink "file" {
+            config {
+                path = "/vault/.agent-token"
+            }
+        }
+    }
+
+    cache {
+       use_auto_auth_token = true
+    }
+
+    listener "tcp" {
+        address = "127.0.0.1:8007"
+        tls_disable = true
+    }
+
+    exit_after_auth = true
+
+    # TEMPLATES
+    template {
+        source = "/vault/config/templates/apicert.tmpl"
+        destination = "/app/truststore/${CERT_API_PUBLIC_KEY_NAME}.cer"
+    }
+
+    template {
+        source = "/vault/config/templates/issuing.tmpl"
+        destination = "/app/truststore/${CERT_ISSUING_NAME}.cer"
+    }
+
+    template {
+        source = "/vault/config/templates/root.tmpl"
+        destination = "/app/truststore/${CERT_ROOT_NAME}.cer"
+    }
+
+    template {
+        source = "/vault/config/templates/api_issuing.tmpl"
+        destination = "/app/truststore/${CERT_API_CONNECT_ISSUING_NAME}.cer"
+    }
+
+    template {
+        source = "/vault/config/templates/api_root.tmpl"
+        destination = "/app/truststore/${CERT_API_CONNECT_ROOT_NAME}.cer"
+    }
+
+    template {
+        source = "/vault/config/templates/${NAMESPACE}.tmpl"
+        destination = "/app/keystore/${NAMESPACE}.cer"
+    }
+
+    template {
+        source = "/vault/config/templates/key.tmpl"
+        destination = "/app/keystore/${NAMESPACE}.key"
+    }
+
+    template {
+        source = "/vault/config/templates/pass.tmpl"
+        destination = "/app/keystore/${NAMESPACE}.pass"
+    }

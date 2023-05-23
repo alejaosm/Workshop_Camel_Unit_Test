@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ${APPLICATION_NAME}-vault-templates
+  namespace: ${NAMESPACE}
+data:
+  apicert.tmpl: |
+    {{ with secret "kv/integracion/API_CONNECT/public/${CERT_API_PUBLIC_KEY_NAME}.pem" }}{{ .Data.data.cert }}{{ end }}
+  issuing.tmpl: |
+    {{ with secret "kv/integracion/pki-bancolombia" }}{{ .Data.data.${CERT_ISSUING_NAME} }}{{ end }}
+  root.tmpl: |
+    {{ with secret "kv/integracion/pki-bancolombia" }}{{ .Data.data.${CERT_ROOT_NAME} }}{{ end }}
+  api_issuing.tmpl: |
+    {{ with secret "kv/integracion/pki-bancolombia" }}{{ .Data.data.${CERT_API_CONNECT_ISSUING_NAME} }}{{ end }}
+  api_root.tmpl: |
+    {{ with secret "kv/integracion/pki-bancolombia" }}{{ .Data.data.${CERT_API_CONNECT_ROOT_NAME} }}{{ end }}
+  ${NAMESPACE}.tmpl: |
+    {{ with secret "${VAULT_PATH_CERT_PUBLIC_NAMESPACE}" }}{{ .Data.data.cert }}{{ end }}
+  key.tmpl: |
+    {{ with secret "${VAULT_PATH_CERT_PRIVATE_NAMESPACE}" }}{{ .Data.data.key }}{{ end }}
+  pass.tmpl: |
+    {{ with secret "${VAULT_PATH_CERT_PRIVATE_NAMESPACE}" }}{{ .Data.data.pass }}{{ end }}

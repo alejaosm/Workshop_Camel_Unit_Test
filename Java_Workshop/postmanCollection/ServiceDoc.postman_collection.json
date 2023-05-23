@@ -1,0 +1,82 @@
+{
+    "info": {
+        "_postman_id": "82e0839c-1d01-4319-a434-1675c59d406d",
+        "name": "Camel Ejemplo",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "23405887"
+    },
+    "item": [
+        {
+            "name": "POST",
+            "protocolProfileBehavior": {
+                "strictSSL": false
+            },
+            "request": {
+                "auth": {
+                    "type": "basic",
+                    "basic": [
+                        {
+                            "key": "password",
+                            "value": "pass456*",
+                            "type": "string"
+                        },
+                        {
+                            "key": "username",
+                            "value": "user1",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "POST",
+                "header": [
+                    {
+                    "key": "message-id",
+                    "value": "2398-2343-324233-32423424",
+                    "type": "text"
+                    },
+                    {
+                    "key": "id-consumer",
+                    "value": "NU0051001",
+                    "type": "text"
+                    },
+                    {
+                    "key": "service-operation",
+                    "value": "SM_AutenticacionCliente",
+                    "type": "text"
+                    },
+                    {
+                    "key": "service-namespace",
+                    "value": "http://grupobancolombia.com/intf/Seguridad/Autenticacion/AutenticacionCliente/Enlace/V1.0",
+                    "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"name\":\"Mandarine\",\r\n    \"description\":\"Tropical Minds\"\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://localhost:8081/v1/operations/product-specific/transactional/basepath/servicepath",
+                    "protocol": "https",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8081",
+                    "path": [
+                        "v1",
+                        "operations",
+                        "product-specific",
+                        "transactional",
+                        "basepath",
+                        "servicepath"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ]
+}

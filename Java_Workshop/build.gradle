@@ -1,0 +1,115 @@
+buildscript {
+    ext {
+        cttPluginVersion = '1.1.0'
+        camelVersion = '3.20.1'
+        springBootVersion = '2.7.7'
+        sonarVersion = '3.0'
+        coreCommonVersion='1.8.9'
+        jacocoVersion = '0.8.8'
+        lombokVersion = '1.18.24'
+    }
+}
+
+plugins {
+    id 'co.com.bancolombia.transactionalLayer' version "${cttPluginVersion}"
+    id 'org.springframework.boot' version "${springBootVersion}"
+    id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+    id 'org.sonarqube' version "${sonarVersion}"
+    id 'java'
+    id 'jacoco'
+}
+
+group = 'co.com.bancolombia'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = JavaVersion.VERSION_11
+
+repositories {
+    maven { url "https://artifactory.apps.bancolombia.com/maven-bancolombia" }
+}
+
+dependencies {
+    //Camel Dependencies
+    implementation "org.apache.camel.springboot:camel-spring-boot-starter:${camelVersion}"
+    implementation "org.apache.camel:camel-test-spring-junit5:${camelVersion}"
+    implementation "org.apache.camel:camel-core:${camelVersion}"
+    implementation "org.apache.camel.springboot:camel-netty-http-starter:${camelVersion}"
+    implementation "org.apache.camel:camel-management:${camelVersion}"
+    implementation "org.apache.camel:camel-bean-validator:${camelVersion}"
+    implementation "org.apache.camel.springboot:camel-jackson-starter:${camelVersion}"
+    implementation "org.apache.camel.springboot:camel-jsonpath-starter:${camelVersion}"
+
+    //Metricas JVM, Hawtio y Prometheus Thanos
+    implementation 'io.github.mweirauch:micrometer-jvm-extras:0.2.2'
+    implementation "org.apache.camel:camel-micrometer:${camelVersion}"
+    implementation "org.apache.camel:camel-metrics:${camelVersion}"
+    implementation 'io.micrometer:micrometer-registry-prometheus:1.9.4'
+    implementation 'io.hawt:hawtio-springboot:2.17.0'
+
+    //Solventar vulnerabilidades
+    implementation 'org.yaml:snakeyaml:1.33'
+    implementation 'io.netty:netty-codec-http:4.1.86.Final'
+    //Core-Common-Camel Bancolombia
+    implementation 'co.com.bancolombia.integracion:processors:'+ "${coreCommonVersion}"
+    implementation 'co.com.bancolombia.integracion:camel-routes:'+ "${coreCommonVersion}"
+    implementation 'co.com.bancolombia.integracion:utils:'+ "${coreCommonVersion}"
+    implementation 'co.com.bancolombia.integracion:policy-manager:'+ "${coreCommonVersion}"
+    //Otros
+    implementation 'com.google.code.gson:gson:2.9.1'
+    implementation 'io.swagger.core.v3:swagger-annotations:2.2.2'
+
+    //Core-Common-Camel Bancolombia
+    implementation "co.com.bancolombia.integracion:processors:${coreCommonVersion}"
+    implementation "co.com.bancolombia.integracion:camel-routes:${coreCommonVersion}"
+    implementation "co.com.bancolombia.integracion:utils:${coreCommonVersion}"
+    implementation "co.com.bancolombia.integracion.integration_adapter:integration-adapter-apiconnect:${coreCommonVersion}"
+
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor  "org.projectlombok:lombok:${lombokVersion}"
+    testCompileOnly  "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor  "org.projectlombok:lombok:${lombokVersion}"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jacocoTestReport {
+    dependsOn(tasks.test)
+    reports {
+        xml.enabled true
+        xml.destination file("${buildDir}/reports/jacoco/report.xml")
+        html.enabled true
+        csv.enabled false
+    }
+}
+
+sonarqube {
+    properties {
+        property "sonar.sourceEnconding", "UTF-8"
+        property "sonar.sources", "."
+        property "sonar.test", "src/test/java"
+        property "sonar.java.binaries", "build/classes"
+        property "sonar.junit.reportsPath", "build/test-results/test"
+        property "sonar.java.coveragePlugin", "jacoco"
+        property "sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/report.xml"
+        property "sonar.exclusions", ".github/**,**/**models**,**/**exceptions**"
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs = [
+        '-Amapstruct.suppressGeneratorTimestamp=true'
+    ]
+}
+
+tasks.named('wrapper') {
+    gradleVersion = '7.4.2'
+}
+
+configurations {
+    all*.exclude module : 'spring-boot-starter-logging'
+    compile.exclude module: 'spring-boot-starter-tomcat'
+    compile.exclude group: 'org.apache.tomcat'
+}

@@ -1,0 +1,174 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ${APPLICATION_NAME}
+    app-type: camel
+  name: ${APPLICATION_NAME}
+  namespace: ${NAMESPACE}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ${APPLICATION_NAME}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ${APPLICATION_NAME}
+        app-type: camel
+    spec:
+      containers:
+        - args:
+            - '--http-address=0.0.0.0:4180'
+            - '--config=/etc/oauth2_proxy/oauth2_proxy.cfg'
+          env:
+            - name: OAUTH2_PROXY_COOKIE_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: oauth2-proxy-secret-trns-${NAMESPACE}
+                  key: OAUTH2_PROXY_COOKIE_SECRET
+            - name: OAUTH2_PROXY_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: oauth2-proxy-secret-trns-${NAMESPACE}
+                  key: OAUTH2_PROXY_CLIENT_SECRET
+          image: image-registry.openshift-image-registry.svc:5000/${NAMESPACE}/oauth2-proxy:v7.1.3
+          name: oauth2-proxy
+          resources:
+            limits:
+              cpu: ${RESOURCE_LIMIT_OAUTH_CPU}
+              memory: ${RESOURCE_LIMIT_OAUTH_MEMORY}
+            requests:
+              cpu: ${RESOURCE_REQUESTS_OAUTH_CPU}
+              memory: ${RESOURCE_REQUESTS_OAUTH_MEMORY}
+          ports:
+            - name: web
+              containerPort: 4180
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 4180
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 2
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 4180
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 2
+            successThreshold: 1
+          volumeMounts:
+            - mountPath: /etc/oauth2_proxy
+              name: oauth2config
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+        - env:
+            - name: APP_NU
+              value: '${APP_NU}'
+            - name: INTERNAL_HTTP_COMPONENT
+              value: '${INTERNAL_HTTP_COMPONENT}'
+            - name: INTERNAL_HTTP_PORT
+              value: '${INTERNAL_HTTP_PORT}'
+            - name: INTERNAL_HTTP_CONTEXTPATH
+              value: '${INTERNAL_HTTP_CONTEXTPATH}'
+            - name: INTERNAL_HTTP_CORS
+              value: '${INTERNAL_HTTP_CORS}'
+            - name: INTERNAL_HTTP_CLI_REQ_VAL
+              value: '${INTERNAL_HTTP_CLI_REQ_VAL}'
+            - name: INTERNAL_HTTP_HOST
+              value: '${INTERNAL_HTTP_HOST}'
+            - name: INTERNAL_HTTP_PORT
+              value: '${INTERNAL_HTTP_PORT}'
+            - name: INTERNAL_HTTP_PROPERTY_TITLE
+              value: '${INTERNAL_HTTP_PROPERTY_TITLE}'
+            - name: INTERNAL_HTTP_PROPERTY_VERSION
+              value: '${INTERNAL_HTTP_PROPERTY_VERSION}'
+            - name: KEY_CERT_ALIAS
+              value: '${KEY_CERT_ALIAS}'
+            - name: KEY_PATH
+              value: '${KEY_PATH}'
+            - name: KEY_TRUST_PATH
+              value: '${KEY_TRUST_PATH}'
+            - name: KEY_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ${APPLICATION_NAME}-keys-secret
+                  key: CAMEL_KEYSTORE_PASSWORD
+            - name: KEY_TRUST_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ${APPLICATION_NAME}-keys-secret
+                  key: CAMEL_TRUSTSTORE_PASSWORD
+            - name: SERVER_PORT
+              value: '${SERVER_PORT}'
+            - name: KAFKA_TOPIC
+              value: '${KAFKA_TOPIC}'
+            - name: KAFKA_BROKERS
+              value: '${KAFKA_BROKERS}'
+            - name: KEY_STORE_PASSWORD
+              value: '${KEY_STORE_PASSWORD}'
+            - name: EXECUTION_ENVIRONMENT
+              value: '${EXECUTION_ENVIRONMENT}'
+            - name: ENVIRONMENT
+              value: '${ENVIRONMENT}'
+          image: ${REGISTRY_OPENSHIFT}/${NAMESPACE}/${NAME_IMAGE}:${VERSION_IMAGE}
+          imagePullPolicy: Always
+          name: ${APPLICATION_NAME}
+          resources:
+            limits:
+              cpu: ${RESOURCE_LIMIT_CPU}
+              memory: ${RESOURCE_LIMIT_MEMORY}
+            requests:
+              cpu: ${RESOURCE_REQUESTS_CPU}
+              memory: ${RESOURCE_REQUESTS_MEMORY}
+          ports:
+            - containerPort: 8081
+              protocol: TCP
+            - containerPort: 9779
+              protocol: TCP
+          volumeMounts:
+            - name: vault-cred
+              mountPath: '/vault/config/agent-creds'
+            - name: vault-config
+              mountPath: '/vault/config/agent-config.hcl'
+              subPath: 'agent-config.hcl'
+            - name: vault-templates
+              mountPath: '/vault/config/templates'
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: ${SERVICE_ACCOUNT}
+      serviceAccountName: ${SERVICE_ACCOUNT}
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - name: vault-templates
+          configMap:
+            name: ${APPLICATION_NAME}-vault-templates
+            defaultMode: 420
+        - name: vault-config
+          configMap:
+            name: ${APPLICATION_NAME}-vault-config
+            defaultMode: 420
+        - name: oauth2config
+          configMap:
+            name: oauth2-proxy-trns-${NAMESPACE}
+            defaultMode: 420
+        - name: vault-cred
+          secret:
+            secretName: ${APPLICATION_NAME}-vault-cred
+            defaultMode: 420
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
