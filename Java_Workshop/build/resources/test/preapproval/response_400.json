@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "_messageId": "c4e6bd04-5149-11e7-b114-b2f933d5fe66",
+    "_version": "1.0",
+    "_requestDate": "2017-01-24T05:00:00.000Z",
+    "_responseSize": 20,
+    "_clientRequest": "acxff62e-6f12-42de-9012-3e7304418abd"
+  },
+  "status": 404,
+  "title": "Not Found",
+  "errors": [
+    {
+      "code": "BP404",
+      "detail": "Requested resource could not be found"
+    }
+  ]
+}

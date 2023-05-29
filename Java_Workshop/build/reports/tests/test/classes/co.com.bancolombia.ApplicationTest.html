@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - ApplicationTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>ApplicationTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/co.com.bancolombia.html">co.com.bancolombia</a> &gt; ApplicationTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.736s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+<li>
+<a href="#tab2">Standard error</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">contextLoads()</td>
+<td class="success">0.736s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>[                   Test worker] ingBootTestContextBootstrapper INFO  Neither @ContextConfiguration nor @ContextHierarchy found for test class [co.com.bancolombia.ApplicationTest], using SpringBootContextLoader
+[                   Test worker] AbstractContextLoader          INFO  Could not detect default resource locations for test class [co.com.bancolombia.ApplicationTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+[                   Test worker] tationConfigContextLoaderUtils INFO  Could not detect default configuration classes for test class [co.com.bancolombia.ApplicationTest]: ApplicationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+[                   Test worker] ingBootTestContextBootstrapper INFO  Found @SpringBootConfiguration co.com.bancolombia.Application for test class co.com.bancolombia.ApplicationTest
+[                   Test worker] ingBootTestContextBootstrapper INFO  Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener]
+[                   Test worker] ingBootTestContextBootstrapper INFO  Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3b4a77be, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1ff55410, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@53628ff6, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@505e8d48, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@3841e77a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@d2161b6, org.springframework.test.context.transaction.TransactionalTestExecutionListener@4a7b42db, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6e6bb211, org.springframework.test.context.event.EventPublishingTestExecutionListener@5926f291, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@5f0c04d2, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@4ff1f872, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@7c3920a7, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@12e5f7cb, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@2df05bd1, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@6d821475]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.7.7)
+
+[            background-preinit] Version                        INFO  HV000001: Hibernate Validator 6.2.5.Final
+[                   Test worker] ateJsonObjectContextCustomizer WARN  
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/Users/mariagomez.osman/.gradle/caches/modules-2/files-2.1/org.json/json/20180130/26ba2ec0e791a32ea5dfbedfcebf36447ee5b12c/json-20180130.jar!/org/json/JSONObject.class
+	jar:file:/Users/mariagomez.osman/.gradle/caches/modules-2/files-2.1/com.vaadin.external.google/android-json/0.0.20131108.vaadin1/fa26d351fe62a6a17f5cda1287c1c6110dec413f/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+[                   Test worker] ApplicationTest                INFO  Starting ApplicationTest using Java 11.0.12 on MacBook-Pro-de-Maria.local with PID 24899 (started by mariagomez.osman in /Users/mariagomez.osman/Desktop/UnitTestCamel_Wrokshop_May2023/java/Workshop_Camel_Unit_Test/Java_Workshop)
+[                   Test worker] ApplicationTest                INFO  No active profile set, falling back to 1 default profile: &quot;default&quot;
+[                   Test worker] EndpointLinksResolver          INFO  Exposing 9 endpoint(s) beneath base path '/actuator'
+[                   Test worker] ApplicationTest                INFO  Started ApplicationTest in 13.376 seconds (JVM running for 21.51)
+</pre>
+</span>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>[Test worker] INFO org.apache.camel.impl.engine.DefaultAutowiredLifecycleStrategy - Autowired property: validatorFactory on component: bean-validator as exactly one instance of type: javax.validation.ValidatorFactory (org.springframework.validation.beanvalidation.LocalValidatorFactoryBean) found in the registry
+[Test worker] INFO org.apache.camel.component.netty.http.HttpServerInitializerFactory - Created SslContext SSLContext[hash=2a53db9c, provider=SunJSSE version 11, protocol=TLSv1.3, needClientAuth=false, wantClientAuth=false
+	defaultProtocols=TLSv1.3,TLSv1.2
+	defaultCipherSuites=TLS_AES_128_GCM_SHA256,TLS_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,TLS_DHE_DSS_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_DHE_RSA_WITH_AES_128_GCM_SHA256,TLS_DHE_DSS_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_DHE_RSA_WITH_AES_256_CBC_SHA256,TLS_DHE_DSS_WITH_AES_256_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_DHE_DSS_WITH_AES_256_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_DHE_RSA_WITH_AES_128_CBC_SHA256,TLS_DHE_DSS_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_DSS_WITH_AES_128_CBC_SHA,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
+	supportedProtocols=TLSv1.3,TLSv1.2,TLSv1.1,TLSv1,SSLv3,SSLv2Hello
+	supportedCipherSuites=TLS_AES_128_GCM_SHA256,TLS_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,TLS_DHE_DSS_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_DHE_RSA_WITH_AES_128_GCM_SHA256,TLS_DHE_DSS_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_DHE_RSA_WITH_AES_256_CBC_SHA256,TLS_DHE_DSS_WITH_AES_256_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_DHE_DSS_WITH_AES_256_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_DHE_RSA_WITH_AES_128_CBC_SHA256,TLS_DHE_DSS_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_DSS_WITH_AES_128_CBC_SHA,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
+]
+[Test worker] INFO org.apache.camel.component.netty.http.HttpServerBootstrapFactory - BootstrapFactory on port 8081 is using bootstrap configuration: [NettyServerBootstrapConfiguration{protocol='http', host='0.0.0.0', port=8081, broadcast=false, sendBufferSize=65536, receiveBufferSize=65536, receiveBufferSizePredictor=0, workerCount=0, bossCount=1, keepAlive=true, tcpNoDelay=true, reuseAddress=true, connectTimeout=10000, backlog=0, serverInitializerFactory=org.apache.camel.component.netty.http.HttpServerInitializerFactory@33bd69a5, nettyServerBootstrapFactory=null, options=null, ssl=true, sslHandler=null, sslContextParameters='SSLContextParameters[keyManagers=KeyManagersParameters[keyStore=KeyStoreParameters[type=jks, password=********, provider=null, resource=file://Users/mariagomez.osman/Desktop/UnitTestCamel_Wrokshop_May2023/java/Workshop_Camel_Unit_Test/Java_Workshop/src/main/resources/keys/deposits.jks], keyPassword=********, provider=null, algorithm=null], trustManagers=TrustManagerType[keyStore=KeyStoreParameters[type=null, password=********, provider=null, resource=file://Users/mariagomez.osman/Desktop/UnitTestCamel_Wrokshop_May2023/java/Workshop_Camel_Unit_Test/Java_Workshop/src/main/resources/keys/deposits.jks], provider=null, algorithm=null], secureRandom=null, clientParameters=null, serverParameters=SSLContextServerParameters[clientAuthentication=REQUIRE, getCipherSuites()=null, getCipherSuitesFilter()=null, getSecureSocketProtocols()=null, getSecureSocketProtocolsFilter()=null, getSessionTimeout()=null], provider=null, secureSocketProtocol=null, certAlias=depositsservices.ambientesbc.lab, getCipherSuites()=null, getCipherSuitesFilter()=null, getSecureSocketProtocols()=null, getSecureSocketProtocolsFilter()=null, getSessionTimeout()=null]', needClientAuth=false, enabledProtocols='TLSv1.2,TLSv1.3, keyStoreFile=null, trustStoreFile=null, keyStoreResource='null', trustStoreResource='null', keyStoreFormat='JKS', securityProvider='SunX509', passphrase='null', bossGroup=null, workerGroup=null, networkInterface='null', reconnect='true', reconnectInterval='10000'}]
+[Test worker] INFO org.apache.camel.impl.engine.AbstractCamelContext - Apache Camel 3.20.1 (ApplicationName-Context) is starting
+[Test worker] INFO org.apache.camel.component.netty.NettyComponent - Creating shared NettyConsumerExecutorGroup with 17 threads
+[Test worker] INFO org.apache.camel.spring.boot.CamelSpringBootApplicationListener - Starting CamelMainRunController to ensure the main thread keeps running
+[CamelMainRunController] INFO org.apache.camel.main.MainSupport - Apache Camel (Main) 3.20.1 is starting
+[Test worker] INFO org.apache.camel.component.netty.SingleTCPNettyServerBootstrapFactory - ServerBootstrap binding to 0.0.0.0:8081
+[Test worker] INFO org.apache.camel.component.netty.NettyConsumer - Netty consumer bound to: 0.0.0.0:8081
+[Test worker] INFO org.apache.camel.impl.engine.AbstractCamelContext - Routes startup (started:10)
+[Test worker] INFO org.apache.camel.impl.engine.AbstractCamelContext -     Started generic-consume-apic-route-id (direct://generic-consume-apic)
+[Test worker] INFO org.apache.camel.impl.engine.AbstractCamelContext -     Started preapproval-route-id (direct://preapproval)
+[Test worker] INFO org.apache.camel.impl.engine.AbstractCamelContext -     Started retrieve-route-id (direct://retrieve)
+[Test worker] INFO org.apache.camel.impl.engine.AbstractCamelContext -     Started validation-errors-route-id (direct://validation-errors)
+[Test worker] INFO org.apache.camel.impl.engine.AbstractCamelContext -     Started transformation-credit-route-id (direct://transformation-credit)
+[Test worker] INFO org.apache.camel.impl.engine.AbstractCamelContext -     Started transformation-debit-route-id (direct://transformation-debit)
+[Test worker] INFO org.apache.camel.impl.engine.AbstractCamelContext -     Started route1 (direct://route-rest-adapter)
+[Test worker] INFO org.apache.camel.impl.engine.AbstractCamelContext -     Started route2 (rest://post:/v1/workshop/camel-unit-test:/preapproval)
+[Test worker] INFO org.apache.camel.impl.engine.AbstractCamelContext -     Started consumeIAApiC (direct://consumeIAApiC)
+[Test worker] INFO org.apache.camel.impl.engine.AbstractCamelContext -     Started route3 (direct://commonRoute)
+[Test worker] INFO org.apache.camel.impl.engine.AbstractCamelContext - Apache Camel 3.20.1 (ApplicationName-Context) started in 6s911ms (build:187ms init:6s159ms start:565ms)
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.4.2</a> at 29/05/2023, 8:59:29 a. m.</p>
+</div>
+</div>
+</body>
+</html>

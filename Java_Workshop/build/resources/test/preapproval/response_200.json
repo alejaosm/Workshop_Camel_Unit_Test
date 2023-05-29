@@ -1,0 +1,22 @@
+{
+  "meta": {
+    "_requestDateTime": "2023-06-01T07:43:00.798Z",
+    "_messageId": "eca19a74-f5a0-11ed-b67e-workshop",
+    "_applicationId": "a2e9c2321574591ec249eb0e7e3e9b6d"
+  },
+  "data": {
+    "preapproval": {
+      "starDate": "2023-06-01",
+      "productName": "Cupo global",
+      "productCode": "32",
+      "preapprovalQuota": "$50.000.000",
+      "opportunityId": "50042",
+      "endDate": "2023-12-01"
+    },
+    "customer": {
+      "type": "TIPDOC_FS001",
+      "number": "1770017092",
+      "fullName": "Iron Man"
+    }
+  }
+}

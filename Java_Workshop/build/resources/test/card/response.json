@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "_messageId": "c4e6bd04-5149-11e7-b114-b2f933d5fe66",
+    "_requestDateTime": "2017-01-24T05:00: 00.000Z",
+    "_applicationId": "acxff62e-6f12-42de-9012-3e7304418abd"
+  },
+  "data": {
+    "customer": {
+      "identification": {
+        "documentType": "TIPDOC_FS000",
+        "documentNumber": "1770017092"
+      }
+    }
+  }
+}
